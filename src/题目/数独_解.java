@@ -439,11 +439,6 @@ public class 数独_解 {
         return sudoku_target;
     }
 
-    public static int[][] sudoku_main_processing (int[][] sudoku_target) {
-
-
-        return sudoku_target;
-    }
 
 
     //要解决的数独
