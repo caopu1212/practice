@@ -39,7 +39,8 @@ public class 数独_解 {
 
 
     //验证数独是否完整
-    private static boolean valid_iscomplete(int[][] sudoku_target) {
+    private static boolean valid_iscomplete(int[][
+            ] sudoku_target) {
         for (int i = 0; i < sudoku_target.length; i++) {
             for (int j = 0; j < sudoku_target[i].length; j++) {
                 if (sudoku_target[i][j] == 0) {
@@ -435,6 +436,12 @@ public class 数独_解 {
                 }
             }
         }
+        return sudoku_target;
+    }
+
+    public static int[][] sudoku_main_processing (int[][] sudoku_target) {
+
+
         return sudoku_target;
     }
 
