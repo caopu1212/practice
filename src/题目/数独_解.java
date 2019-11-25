@@ -69,12 +69,11 @@ public class 数独_解 {
                     for (int i = 0; i < calculat.size(); i++) {
                         result = result + calculat.get(i);
                     }
-                    if (result == 45) {
-                    } else {
+                    if (result != 45) {
                         return false;
                     }
                 }
-                if (templine == 0 && tempcolumn == 1) {
+                else if (templine == 0 && tempcolumn == 1) {
                     for (int i = 0; i < 3; i++) {
                         for (int j = 3; j < 6; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -84,12 +83,11 @@ public class 数独_解 {
                     for (int i = 0; i < calculat.size(); i++) {
                         result = result + calculat.get(i);
                     }
-                    if (result == 45) {
-                    } else {
+                    if (result != 45) {
                         return false;
                     }
                 }
-                if (templine == 0 && tempcolumn == 2) {
+                else if (templine == 0 && tempcolumn == 2) {
                     for (int i = 0; i < 3; i++) {
                         for (int j = 6; j < 9; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -99,12 +97,11 @@ public class 数独_解 {
                     for (int i = 0; i < calculat.size(); i++) {
                         result = result + calculat.get(i);
                     }
-                    if (result == 45) {
-                    } else {
+                    if (result != 45) {
                         return false;
                     }
                 }
-                if (templine == 1 && tempcolumn == 0) {
+                else if (templine == 1 && tempcolumn == 0) {
                     for (int i = 3; i < 6; i++) {
                         for (int j = 0; j < 3; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -114,12 +111,11 @@ public class 数独_解 {
                     for (int i = 0; i < calculat.size(); i++) {
                         result = result + calculat.get(i);
                     }
-                    if (result == 45) {
-                    } else {
+                    if (result != 45) {
                         return false;
                     }
                 }
-                if (templine == 1 && tempcolumn == 1) {
+                else if (templine == 1 && tempcolumn == 1) {
                     for (int i = 3; i < 6; i++) {
                         for (int j = 3; j < 6; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -129,12 +125,11 @@ public class 数独_解 {
                     for (int i = 0; i < calculat.size(); i++) {
                         result = result + calculat.get(i);
                     }
-                    if (result == 45) {
-                    } else {
+                    if (result != 45) {
                         return false;
                     }
                 }
-                if (templine == 1 && tempcolumn == 2) {
+                else if (templine == 1 && tempcolumn == 2) {
                     for (int i = 3; i < 6; i++) {
                         for (int j = 6; j < 9; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -144,12 +139,11 @@ public class 数独_解 {
                     for (int i = 0; i < calculat.size(); i++) {
                         result = result + calculat.get(i);
                     }
-                    if (result == 45) {
-                    } else {
+                    if (result != 45) {
                         return false;
                     }
                 }
-                if (templine == 2 && tempcolumn == 0) {
+                else if (templine == 2 && tempcolumn == 0) {
                     for (int i = 6; i < 9; i++) {
                         for (int j = 0; j < 3; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -159,12 +153,11 @@ public class 数独_解 {
                     for (int i = 0; i < calculat.size(); i++) {
                         result = result + calculat.get(i);
                     }
-                    if (result == 45) {
-                    } else {
+                    if (result != 45) {
                         return false;
                     }
                 }
-                if (templine == 2 && tempcolumn == 1) {
+                else if (templine == 2 && tempcolumn == 1) {
                     for (int i = 6; i < 9; i++) {
                         for (int j = 3; j < 6; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -174,12 +167,11 @@ public class 数独_解 {
                     for (int i = 0; i < calculat.size(); i++) {
                         result = result + calculat.get(i);
                     }
-                    if (result == 45) {
-                    } else {
+                    if (result != 45) {
                         return false;
                     }
                 }
-                if (templine == 2 && tempcolumn == 2) {
+                else if (templine == 2 && tempcolumn == 2) {
                     for (int i = 6; i < 9; i++) {
                         for (int j = 6; j < 9; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -189,165 +181,11 @@ public class 数独_解 {
                     for (int i = 0; i < calculat.size(); i++) {
                         result = result + calculat.get(i);
                     }
-                    if (result == 45) {
-                    } else {
+                    if (result != 45) {
                         return false;
                     }
                 }
 
-            }
-        }
-        return true;
-    }
-    //检测每个指定3x3宫是否符合。 输入参数：目标数组，目标行和列
-    public static boolean valid_gong(int[][] sudoku_calculat, int line, int column) {
-        //验证 宫
-        int tempcolumn = column / 3;
-        int templine = line / 3;
-        List<Integer> calculat = new ArrayList<>();
-        //左到右 上到下
-        if (templine == 0 && tempcolumn == 0) {
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    calculat.add(sudoku_calculat[i][j]);
-                }
-            }
-            int result = 0;
-            for (int i = 0; i < calculat.size(); i++) {
-                result = result + calculat.get(i);
-            }
-            if (result == 45) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        if (templine == 0 && tempcolumn == 1) {
-            for (int i = 0; i < 3; i++) {
-                for (int j = 3; j < 6; j++) {
-                    calculat.add(sudoku_calculat[i][j]);
-                }
-            }
-            int result = 0;
-            for (int i = 0; i < calculat.size(); i++) {
-                result = result + calculat.get(i);
-            }
-            if (result == 45) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        if (templine == 0 && tempcolumn == 2) {
-            for (int i = 0; i < 3; i++) {
-                for (int j = 6; j < 9; j++) {
-                    calculat.add(sudoku_calculat[i][j]);
-                }
-            }
-            int result = 0;
-            for (int i = 0; i < calculat.size(); i++) {
-                result = result + calculat.get(i);
-            }
-            if (result == 45) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        if (templine == 1 && tempcolumn == 0) {
-            for (int i = 3; i < 6; i++) {
-                for (int j = 0; j < 3; j++) {
-                    calculat.add(sudoku_calculat[i][j]);
-                }
-            }
-            int result = 0;
-            for (int i = 0; i < calculat.size(); i++) {
-                result = result + calculat.get(i);
-            }
-            if (result == 45) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        if (templine == 1 && tempcolumn == 1) {
-            for (int i = 3; i < 6; i++) {
-                for (int j = 3; j < 6; j++) {
-                    calculat.add(sudoku_calculat[i][j]);
-                }
-            }
-            int result = 0;
-            for (int i = 0; i < calculat.size(); i++) {
-                result = result + calculat.get(i);
-            }
-            if (result == 45) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        if (templine == 1 && tempcolumn == 2) {
-            for (int i = 3; i < 6; i++) {
-                for (int j = 6; j < 9; j++) {
-                    calculat.add(sudoku_calculat[i][j]);
-                }
-            }
-            int result = 0;
-            for (int i = 0; i < calculat.size(); i++) {
-                result = result + calculat.get(i);
-            }
-            if (result == 45) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        if (templine == 2 && tempcolumn == 0) {
-            for (int i = 6; i < 9; i++) {
-                for (int j = 0; j < 3; j++) {
-                    calculat.add(sudoku_calculat[i][j]);
-                }
-            }
-            int result = 0;
-            for (int i = 0; i < calculat.size(); i++) {
-                result = result + calculat.get(i);
-            }
-            if (result == 45) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        if (templine == 2 && tempcolumn == 1) {
-            for (int i = 6; i < 9; i++) {
-                for (int j = 3; j < 6; j++) {
-                    calculat.add(sudoku_calculat[i][j]);
-                }
-            }
-            int result = 0;
-            for (int i = 0; i < calculat.size(); i++) {
-                result = result + calculat.get(i);
-            }
-            if (result == 45) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        if (templine == 2 && tempcolumn == 2) {
-            for (int i = 6; i < 9; i++) {
-                for (int j = 6; j < 9; j++) {
-                    calculat.add(sudoku_calculat[i][j]);
-                }
-            }
-            int result = 0;
-            for (int i = 0; i < calculat.size(); i++) {
-                result = result + calculat.get(i);
-            }
-            if (result == 45) {
-                return true;
-            } else {
-                return false;
             }
         }
         return true;
@@ -368,7 +206,7 @@ public class 数独_解 {
             listrem(list_target,calculat);
             return list_target;
         }
-        if (templine == 0 && tempcolumn == 1) {
+        else if (templine == 0 && tempcolumn == 1) {
             for (int i = 0; i < 3; i++) {
                 for (int j = 3; j < 6; j++) {
                     calculat.add(sudoku_calculat[i][j]);
@@ -377,7 +215,7 @@ public class 数独_解 {
             listrem(list_target,calculat);
             return list_target;
         }
-        if (templine == 0 && tempcolumn == 2) {
+        else if (templine == 0 && tempcolumn == 2) {
             for (int i = 0; i < 3; i++) {
                 for (int j = 6; j < 9; j++) {
                     calculat.add(sudoku_calculat[i][j]);
@@ -386,7 +224,7 @@ public class 数独_解 {
             listrem(list_target,calculat);
             return list_target;
         }
-        if (templine == 1 && tempcolumn == 0) {
+        else if (templine == 1 && tempcolumn == 0) {
             for (int i = 3; i < 6; i++) {
                 for (int j = 0; j < 3; j++) {
                     calculat.add(sudoku_calculat[i][j]);
@@ -395,7 +233,7 @@ public class 数独_解 {
             listrem(list_target,calculat);
             return list_target;
         }
-        if (templine == 1 && tempcolumn == 1) {
+        else if (templine == 1 && tempcolumn == 1) {
             for (int i = 3; i < 6; i++) {
                 for (int j = 3; j < 6; j++) {
                     calculat.add(sudoku_calculat[i][j]);
@@ -404,7 +242,7 @@ public class 数独_解 {
             listrem(list_target,calculat);
             return list_target;
         }
-        if (templine == 1 && tempcolumn == 2) {
+        else if (templine == 1 && tempcolumn == 2) {
             for (int i = 3; i < 6; i++) {
                 for (int j = 6; j < 9; j++) {
                     calculat.add(sudoku_calculat[i][j]);
@@ -413,7 +251,7 @@ public class 数独_解 {
             listrem(list_target,calculat);
             return list_target;
         }
-        if (templine == 2 && tempcolumn == 0) {
+        else if (templine == 2 && tempcolumn == 0) {
             for (int i = 6; i < 9; i++) {
                 for (int j = 0; j < 3; j++) {
                     calculat.add(sudoku_calculat[i][j]);
@@ -422,7 +260,7 @@ public class 数独_解 {
             listrem(list_target,calculat);
             return list_target;
         }
-        if (templine == 2 && tempcolumn == 1) {
+        else if (templine == 2 && tempcolumn == 1) {
             for (int i = 6; i < 9; i++) {
                 for (int j = 3; j < 6; j++) {
                     calculat.add(sudoku_calculat[i][j]);
@@ -431,7 +269,7 @@ public class 数独_解 {
             listrem(list_target,calculat);
             return list_target;
         }
-        if (templine == 2 && tempcolumn == 2) {
+        else if (templine == 2 && tempcolumn == 2) {
             for (int i = 6; i < 9; i++) {
                 for (int j = 6; j < 9; j++) {
                     calculat.add(sudoku_calculat[i][j]);
@@ -554,7 +392,7 @@ public class 数独_解 {
                 {0, 7, 0, 3, 1, 0, 0, 0, 0},
                 {0, 0, 0, 0, 6, 8, 0, 9, 7}*/
 
-                {0, 0, 7, 0, 0, 0, 0, 0, 0},
+              /*  {0, 0, 7, 0, 0, 0, 0, 0, 0},
                 {5, 0, 0, 4, 0, 0, 7, 0, 0},
                 {8, 0, 0, 0, 0, 1, 0, 0, 3},
                 {9, 0, 0, 8, 0, 0, 5, 0, 0},
@@ -563,6 +401,17 @@ public class 数独_解 {
                 {3, 0, 0, 5, 0, 0, 0, 0, 9},
                 {0, 0, 9, 0, 0, 6, 0, 0, 1},
                 {0, 0, 0, 0, 0, 0, 8, 0, 0}
+*/
+
+                {8, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 3, 6, 0, 0, 0, 0, 0},
+                {0 ,7, 0, 0, 9, 0, 2, 0, 0},
+                {0, 5, 0, 0, 0, 7, 0, 0, 0},
+                {0, 0, 0, 0, 4, 5, 7, 0, 0},
+                {0, 0, 0, 1, 0, 0, 0, 3, 0},
+                {0, 0, 1, 0, 0, 0, 0, 6, 8},
+                {0, 0, 8, 5, 0, 0, 0, 1, 0},
+                {0, 9, 0, 0, 0, 0, 4, 0, 0}
         };
         return sudoku[line][column];
     }
