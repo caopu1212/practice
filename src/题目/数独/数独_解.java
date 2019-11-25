@@ -1,4 +1,4 @@
-package 题目;
+package 题目.数独;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -370,7 +370,7 @@ public class 数独_解 {
     //要解决的数独
     public static int sudoku(int line, int column) {
 
-        int[][] sudoku = {    //数独   8 5 7 ；2 1； 7；
+        int[][] sudoku = {    //题目.数独.数独_生成   8 5 7 ；2 1； 7；
 
                /*   {3, 0, 0, 0, 2, 4, 9, 1, 6},
                   {4, 0, 0, 9, 8, 6, 7, 5, 3},

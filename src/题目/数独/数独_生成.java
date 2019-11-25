@@ -1,7 +1,7 @@
+package 题目.数独;
 
 
-
-public class 数独 {
+public class 数独_生成 {
 
     public int[][] reversionInit() {
         int num[][] = new int[9][9];
@@ -156,7 +156,7 @@ printArray(array);*/
     }
 
     public static void main(String[] args) {
-        数独 re = new 数独();
+        数独_生成 re = new 数独_生成();
         int num[][] = re.reversionInit();
 //初始化第一行
         re.arrayRowOne(num);
