@@ -1,4 +1,4 @@
-package 题目.数独;
+package 题目;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,8 +6,10 @@ import java.util.List;
 
 
 public class 数独_解 {
+    static  int count = 0;
     static class StopMsgException extends RuntimeException {
     }
+
     //从list A中删去list B中的数据
     public static List<Integer> listrem(List<Integer> listA, List<Integer> listB) {
         for (Iterator<Integer> itA = listA.iterator(); itA.hasNext(); ) {
@@ -23,6 +25,7 @@ public class 数独_解 {
         }
         return listA;
     }
+
     //检测每一行和列是否满足规则
     private static boolean valid_line_and_row(int[][] sudoku_target) {
         for (int i = 0; i < 9; i++) {
@@ -33,7 +36,7 @@ public class 数独_解 {
                 count++;
             }
             if (a != 45) {
-                System.out.println("line不满足  "+i);
+//                System.out.println("line不满足  " + i);
                 return false;
             }
         }
@@ -45,12 +48,13 @@ public class 数独_解 {
                 count++;
             }
             if (a != 45) {
-                System.out.println("column 不满足   "+j);
+//                System.out.println("column 不满足   " + j);
                 return false;
             }
         }
         return true;
     }
+
     //检测每个3x3宫是否符合
     public static boolean valid_gong_all(int[][] sudoku_calculat) {
 
@@ -72,8 +76,7 @@ public class 数独_解 {
                     if (result != 45) {
                         return false;
                     }
-                }
-                else if (templine == 0 && tempcolumn == 1) {
+                } else if (templine == 0 && tempcolumn == 1) {
                     for (int i = 0; i < 3; i++) {
                         for (int j = 3; j < 6; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -86,8 +89,7 @@ public class 数独_解 {
                     if (result != 45) {
                         return false;
                     }
-                }
-                else if (templine == 0 && tempcolumn == 2) {
+                } else if (templine == 0 && tempcolumn == 2) {
                     for (int i = 0; i < 3; i++) {
                         for (int j = 6; j < 9; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -100,8 +102,7 @@ public class 数独_解 {
                     if (result != 45) {
                         return false;
                     }
-                }
-                else if (templine == 1 && tempcolumn == 0) {
+                } else if (templine == 1 && tempcolumn == 0) {
                     for (int i = 3; i < 6; i++) {
                         for (int j = 0; j < 3; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -114,8 +115,7 @@ public class 数独_解 {
                     if (result != 45) {
                         return false;
                     }
-                }
-                else if (templine == 1 && tempcolumn == 1) {
+                } else if (templine == 1 && tempcolumn == 1) {
                     for (int i = 3; i < 6; i++) {
                         for (int j = 3; j < 6; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -128,8 +128,7 @@ public class 数独_解 {
                     if (result != 45) {
                         return false;
                     }
-                }
-                else if (templine == 1 && tempcolumn == 2) {
+                } else if (templine == 1 && tempcolumn == 2) {
                     for (int i = 3; i < 6; i++) {
                         for (int j = 6; j < 9; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -142,8 +141,7 @@ public class 数独_解 {
                     if (result != 45) {
                         return false;
                     }
-                }
-                else if (templine == 2 && tempcolumn == 0) {
+                } else if (templine == 2 && tempcolumn == 0) {
                     for (int i = 6; i < 9; i++) {
                         for (int j = 0; j < 3; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -156,8 +154,7 @@ public class 数独_解 {
                     if (result != 45) {
                         return false;
                     }
-                }
-                else if (templine == 2 && tempcolumn == 1) {
+                } else if (templine == 2 && tempcolumn == 1) {
                     for (int i = 6; i < 9; i++) {
                         for (int j = 3; j < 6; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -170,8 +167,7 @@ public class 数独_解 {
                     if (result != 45) {
                         return false;
                     }
-                }
-                else if (templine == 2 && tempcolumn == 2) {
+                } else if (templine == 2 && tempcolumn == 2) {
                     for (int i = 6; i < 9; i++) {
                         for (int j = 6; j < 9; j++) {
                             calculat.add(sudoku_calculat[i][j]);
@@ -190,6 +186,7 @@ public class 数独_解 {
         }
         return true;
     }
+
     //可填数验证，宫
     public static List<Integer> valid_gong_select_num(int[][] sudoku_calculat, int line, int column, List<Integer> list_target) {
         //验证 宫
@@ -203,83 +200,76 @@ public class 数独_解 {
                     calculat.add(sudoku_calculat[i][j]);
                 }
             }
-            listrem(list_target,calculat);
+            listrem(list_target, calculat);
             return list_target;
-        }
-        else if (templine == 0 && tempcolumn == 1) {
+        } else if (templine == 0 && tempcolumn == 1) {
             for (int i = 0; i < 3; i++) {
                 for (int j = 3; j < 6; j++) {
                     calculat.add(sudoku_calculat[i][j]);
                 }
             }
-            listrem(list_target,calculat);
+            listrem(list_target, calculat);
             return list_target;
-        }
-        else if (templine == 0 && tempcolumn == 2) {
+        } else if (templine == 0 && tempcolumn == 2) {
             for (int i = 0; i < 3; i++) {
                 for (int j = 6; j < 9; j++) {
                     calculat.add(sudoku_calculat[i][j]);
                 }
             }
-            listrem(list_target,calculat);
+            listrem(list_target, calculat);
             return list_target;
-        }
-        else if (templine == 1 && tempcolumn == 0) {
+        } else if (templine == 1 && tempcolumn == 0) {
             for (int i = 3; i < 6; i++) {
                 for (int j = 0; j < 3; j++) {
                     calculat.add(sudoku_calculat[i][j]);
                 }
             }
-            listrem(list_target,calculat);
+            listrem(list_target, calculat);
             return list_target;
-        }
-        else if (templine == 1 && tempcolumn == 1) {
+        } else if (templine == 1 && tempcolumn == 1) {
             for (int i = 3; i < 6; i++) {
                 for (int j = 3; j < 6; j++) {
                     calculat.add(sudoku_calculat[i][j]);
                 }
             }
-            listrem(list_target,calculat);
+            listrem(list_target, calculat);
             return list_target;
-        }
-        else if (templine == 1 && tempcolumn == 2) {
+        } else if (templine == 1 && tempcolumn == 2) {
             for (int i = 3; i < 6; i++) {
                 for (int j = 6; j < 9; j++) {
                     calculat.add(sudoku_calculat[i][j]);
                 }
             }
-            listrem(list_target,calculat);
+            listrem(list_target, calculat);
             return list_target;
-        }
-        else if (templine == 2 && tempcolumn == 0) {
+        } else if (templine == 2 && tempcolumn == 0) {
             for (int i = 6; i < 9; i++) {
                 for (int j = 0; j < 3; j++) {
                     calculat.add(sudoku_calculat[i][j]);
                 }
             }
-            listrem(list_target,calculat);
+            listrem(list_target, calculat);
             return list_target;
-        }
-        else if (templine == 2 && tempcolumn == 1) {
+        } else if (templine == 2 && tempcolumn == 1) {
             for (int i = 6; i < 9; i++) {
                 for (int j = 3; j < 6; j++) {
                     calculat.add(sudoku_calculat[i][j]);
                 }
             }
-            listrem(list_target,calculat);
+            listrem(list_target, calculat);
             return list_target;
-        }
-        else if (templine == 2 && tempcolumn == 2) {
+        } else if (templine == 2 && tempcolumn == 2) {
             for (int i = 6; i < 9; i++) {
                 for (int j = 6; j < 9; j++) {
                     calculat.add(sudoku_calculat[i][j]);
                 }
             }
-            listrem(list_target,calculat);
+            listrem(list_target, calculat);
             return list_target;
         }
         return list_target;
     }
+
     //得到指定位置的可填入数字，返回是list
     public static List<Integer> selected_num(int[][] target_sudoku, int target_line, int target_column) {
         int line, column;
@@ -311,8 +301,9 @@ public class 数独_解 {
             }
 
 
-        return valid_gong_select_num(target_sudoku,target_line,target_column,selected_number_all);
+        return valid_gong_select_num(target_sudoku, target_line, target_column, selected_number_all);
     }
+
     //将要解决的的数独写入
     public static int[][] sudoku_load() {
         int[][] sudoku_temp = new int[9][9];
@@ -324,6 +315,7 @@ public class 数独_解 {
         }
         return sudoku_temp;
     }
+
     //如果可填入数为只有一个，直接填入. 入参：需要填入的数独  ：返回：填入后的数独
     public static int[][] sudoku_put_onlyone(int[][] sudoku_target) {
 
@@ -337,85 +329,101 @@ public class 数独_解 {
         }
         return sudoku_target;
     }
+
     // 递归
     public static void solve(int[][] sudoku_target, int line, int column) {
-      if (line == 8 && column == 9 ) {
+
+        if (line == 8 && column == 9) {
             //已经成功了，打印数组即可
-          if(valid_gong_all(sudoku_target)&&valid_line_and_row(sudoku_target)){
-              System.out.println("验证正确");
-              for (int i = 0; i < sudoku_target.length; i++) {
-                  for (int j = 0; j < sudoku_target[i].length; j++) {
-                      System.out.print(sudoku_target[i][j] + "  ");
-                  }
-                  System.out.println();
-              }
-          }
-          return;
-        }
-            if (column == 9) {
-                line++;
-                column = 0;
-            }
-            if (sudoku_target[line][column] == 0) {
-                for (int i = 0; i < selected_num(sudoku_target, line, column).size(); i++) {
-                    sudoku_target[line][column] = selected_num(sudoku_target, line, column).get(i);
-                    solve(sudoku_target, line, column + 1);
-                    //用来重置
-                    sudoku_target[line][column] = 0;
+            if (valid_gong_all(sudoku_target) && valid_line_and_row(sudoku_target)) {
+                count++;
+                System.out.println("验证正确");
+                System.out.println("这是第"+count+" 个解");
+                for (int i = 0; i < sudoku_target.length; i++) {
+                    for (int j = 0; j < sudoku_target[i].length; j++) {
+                        System.out.print(sudoku_target[i][j] + "  ");
+                    }
+                    System.out.println();
                 }
-            } else {
-                solve(sudoku_target, line, column + 1);
             }
+            return;
+        }
+        if (column == 9) {
+            line++;
+            column = 0;
+        }
+
+        if (sudoku_target[line][column] == 0) {
+            for (int i = 0; i < selected_num(sudoku_target, line, column).size(); i++) {
+                sudoku_target[line][column] = selected_num(sudoku_target, line, column).get(i);
+                solve(sudoku_target, line, column + 1);
+                //用来重置
+                sudoku_target[line][column] = 0;
+            }
+        } else {
+            solve(sudoku_target, line, column + 1);
+        }
     }
+
     //要解决的数独
     public static int sudoku(int line, int column) {
 
         int[][] sudoku = {    //题目.数独.数独_生成   8 5 7 ；2 1； 7；
 
-               /*   {3, 0, 0, 0, 2, 4, 9, 1, 6},
-                  {4, 0, 0, 9, 8, 6, 7, 5, 3},
-                  {9, 0, 6, 5, 3, 1, 8, 4, 2},
-                  {2, 1, 4, 8, 9, 7, 6, 3, 5},
-                  {8, 3, 7, 6, 5, 2, 4, 9, 1},
-                  {6, 5, 9, 4, 1, 3, 2, 8, 7},
-                  {1, 4, 2, 3, 7, 9, 5, 6, 8},
-                  {5, 9, 3, 2, 6, 8, 1, 7, 4},
-                  {7, 6, 8, 1, 4, 5, 3, 2, 9}*/
+                /*   {3, 0, 0, 0, 2, 4, 9, 1, 6},
+                   {4, 0, 0, 9, 8, 6, 7, 5, 3},
+                   {9, 0, 6, 5, 3, 1, 8, 4, 2},
+                   {2, 1, 4, 8, 9, 7, 6, 3, 5},
+                   {8, 3, 7, 6, 5, 2, 4, 9, 1},
+                   {6, 5, 9, 4, 1, 3, 2, 8, 7},
+                   {1, 4, 2, 3, 7, 9, 5, 6, 8},
+                   {5, 9, 3, 2, 6, 8, 1, 7, 4},
+                   {7, 6, 8, 1, 4, 5, 3, 2, 9}*/
 
-           /*     {9, 0, 0, 0, 2, 0, 0, 0, 0},
-                {1, 0, 0, 0, 0, 6, 0, 4, 0},
-                {0, 6, 4, 0, 3, 0, 0, 0, 0},
-                {6, 9, 7, 0, 8, 0, 0, 0, 0},
-                {0, 4, 0, 1, 0, 0, 2, 0, 3},
-                {3, 0, 0, 0, 5, 0, 0, 0, 8},
-                {0, 0, 0, 0, 4, 0, 0, 3, 2},
-                {0, 7, 0, 3, 1, 0, 0, 0, 0},
-                {0, 0, 0, 0, 6, 8, 0, 9, 7}*/
+                    /* {9, 0, 0, 0, 2, 0, 0, 0, 0},
+                     {1, 0, 0, 0, 0, 6, 0, 4, 0},
+                     {0, 6, 4, 0, 3, 0, 0, 0, 0},
+                     {6, 9, 7, 0, 8, 0, 0, 0, 0},
+                     {0, 4, 0, 1, 0, 0, 2, 0, 3},
+                     {3, 0, 0, 0, 5, 0, 0, 0, 8},
+                     {0, 0, 0, 0, 4, 0, 0, 3, 2},
+                     {0, 7, 0, 3, 1, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 6, 8, 0, 9, 7}*/
 
-              /*  {0, 0, 7, 0, 0, 0, 0, 0, 0},
-                {5, 0, 0, 4, 0, 0, 7, 0, 0},
-                {8, 0, 0, 0, 0, 1, 0, 0, 3},
-                {9, 0, 0, 8, 0, 0, 5, 0, 0},
-                {0, 4, 0, 0, 0, 0, 0, 6, 0},
-                {0, 0, 1, 3, 0, 0, 0, 0, 4},
-                {3, 0, 0, 5, 0, 0, 0, 0, 9},
-                {0, 0, 9, 0, 0, 6, 0, 0, 1},
-                {0, 0, 0, 0, 0, 0, 8, 0, 0}
-*/
+                  /*{0, 0, 7, 0, 0, 0, 0, 0, 0},
+                  {5, 0, 0, 4, 0, 0, 7, 0, 0},
+                  {8, 0, 0, 0, 0, 1, 0, 0, 3},
+                  {9, 0, 0, 8, 0, 0, 5, 0, 0},
+                  {0, 4, 0, 0, 0, 0, 0, 6, 0},
+                  {0, 0, 1, 3, 0, 0, 0, 0, 4},
+                  {3, 0, 0, 5, 0, 0, 0, 0, 9},
+                  {0, 0, 9, 0, 0, 6, 0, 0, 1},
+                  {0, 0, 0, 0, 0, 0, 8, 0, 0}*/
 
-              //史上最难数独233333
-                {8, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 3, 6, 0, 0, 0, 0, 0},
-                {0 ,7, 0, 0, 9, 0, 2, 0, 0},
-                {0, 5, 0, 0, 0, 7, 0, 0, 0},
-                {0, 0, 0, 0, 4, 5, 7, 0, 0},
-                {0, 0, 0, 1, 0, 0, 0, 3, 0},
-                {0, 0, 1, 0, 0, 0, 0, 6, 8},
-                {0, 0, 8, 5, 0, 0, 0, 1, 0},
-                {0, 9, 0, 0, 0, 0, 4, 0, 0}
+                {0, 0, 0, 0, 0, 0, 0, 3, 0},
+                {3, 0, 1, 0, 0, 7, 9, 0, 0},
+                {0, 0, 0, 0, 0, 2, 0, 0, 0},
+                {0, 0, 7, 0, 0, 0, 0, 0, 2},
+                {0, 0, 0, 0, 2, 0, 0, 0, 0},
+                {0, 0, 0, 8, 0, 3, 0, 9, 5},
+                {0, 0, 0, 0, 0, 8, 1, 0, 0},
+                {0, 3, 0, 0, 1, 5, 0, 0, 0},
+                {0, 4, 8, 0, 0, 0, 5, 0, 0}
+
+//                //史上最难数独233333
+//                {8, 0, 0, 0, 0, 0, 0, 0, 0},
+//                {0, 0, 3, 6, 0, 0, 0, 0, 0},
+//                {0, 7, 0, 0, 9, 0, 2, 0, 0},
+//                {0, 5, 0, 0, 0, 7, 0, 0, 0},
+//                {0, 0, 0, 0, 4, 5, 7, 0, 0},
+//                {0, 0, 0, 1, 0, 0, 0, 3, 0},
+//                {0, 0, 1, 0, 0, 0, 0, 6, 8},
+//                {0, 0, 8, 5, 0, 0, 0, 1, 0},
+//                {0, 9, 0, 0, 0, 0, 4, 0, 0}
         };
         return sudoku[line][column];
     }
+
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();   //获取开始时间
         List<String> list_location_storager = new ArrayList<>();

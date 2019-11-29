@@ -1,5 +1,7 @@
-package 题目.数独;
+package 题目;
 
+
+import java.util.Random;
 
 public class 数独_生成 {
 
@@ -38,6 +40,12 @@ public class 数独_生成 {
         for (int i = 0; i < array[0].length; i++) {
             array[0][i] = Integer.parseInt(indexVal[i]) + 1;
         }
+    }
+
+    public static int randomnum(int start, int end) {
+        Random random = new Random();
+        int randomnum = random.nextInt(end - start + 1) + start;
+        return randomnum;
     }
 
     //根据数组的第一行数据,生成一个数独
@@ -139,20 +147,46 @@ printArray(array);*/
         return reversion(array, line, ++col);
     }
 
+    public static int account(int[][] array) {
+        int[][] sudoku_temp = new int[9][9];
+        sudoku_temp = array;
+        int count = 0;
+        for (int i1 = 0; i1 < sudoku_temp.length; i1++) {
+            for (int j1 = 0; j1 < sudoku_temp[i1].length; j1++) {
+                if (sudoku_temp[i1][j1] == 0) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+
+    public static int[][] dig(int[][] array, int amount) {
+        int[][] sudoku_temp = new int[9][9];
+        sudoku_temp = array;
+        while (account(sudoku_temp) < amount) {
+            sudoku_temp[randomnum(0, 8)][randomnum(0, 8)] = 0;
+        }
+        return sudoku_temp;
+    }
+
     //输出数组
     public void printArray(int[][] array) {
+        System.out.println("{");
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-                if (j % 3 == 0) {
-                    System.out.print("\t");
-                }
-                System.out.print(array[i][j] + "\t");
+//                if (j % 3 == 0) {
+//                    System.out.print("\t");
+//                }
+                System.out.print(array[i][j] + ",");
             }
-            if ((i + 1) % 3 == 0) {
-                System.out.println();
-            }
+//            if ((i + 1) % 3 == 0) {
+//                System.out.println();
+//            }
             System.out.println();
         }
+
     }
 
     public static void main(String[] args) {
@@ -162,8 +196,9 @@ printArray(array);*/
         re.arrayRowOne(num);
 //得到一个正确的数独数据
         re.reversion(num, 1, 0);
-//System.out.println("==================");
-        re.printArray(num);
+
+        //amount控制需要挖多少个空
+        re.printArray(dig(re.reversion(num, 1, 0), 60));
     }
 }
 
