@@ -4,7 +4,6 @@ package 题目;
 import java.util.Random;
 
 public class 数独_生成 {
-
     public int[][] reversionInit() {
         int num[][] = new int[9][9];
         for (int i = 0; i < num.length; i++) {
@@ -14,17 +13,14 @@ public class 数独_生成 {
         }
         return num;
     }
-
     //生成一个随机数
     public int randomIndex(StringBuffer indexArray) {
         int index = (int) (Math.random() * 10);
         if (index == 9 || indexArray.indexOf(index + "") >= 0) {
             index = randomIndex(indexArray);
         }
-//System.out.println(indexArray);
         return index;
     }
-
     //数组的第一行数据,随机生成
     public void arrayRowOne(int[][] array) {
         StringBuffer indexArray = new StringBuffer();
@@ -34,20 +30,17 @@ public class 数独_生成 {
                 indexArray.append(",");
             }
             indexArray.append(index);
-//System.out.println(indexArray);
         }
         String indexVal[] = indexArray.toString().split(",");
         for (int i = 0; i < array[0].length; i++) {
             array[0][i] = Integer.parseInt(indexVal[i]) + 1;
         }
     }
-
     public static int randomnum(int start, int end) {
         Random random = new Random();
         int randomnum = random.nextInt(end - start + 1) + start;
         return randomnum;
     }
-
     //根据数组的第一行数据,生成一个数独
     public int[][] reversion(int[][] array, int line_index, int column_index) {
         int line = line_index;
@@ -146,7 +139,6 @@ printArray(array);*/
         }
         return reversion(array, line, ++col);
     }
-
     public static int account(int[][] array) {
         int[][] sudoku_temp = new int[9][9];
         sudoku_temp = array;
@@ -160,8 +152,6 @@ printArray(array);*/
         }
         return count;
     }
-
-
     public static int[][] dig(int[][] array, int amount) {
         int[][] sudoku_temp = new int[9][9];
         sudoku_temp = array;
@@ -170,35 +160,38 @@ printArray(array);*/
         }
         return sudoku_temp;
     }
-
     //输出数组
     public void printArray(int[][] array) {
-        System.out.println("{");
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-//                if (j % 3 == 0) {
-//                    System.out.print("\t");
-//                }
-                System.out.print(array[i][j] + ",");
+//            if (j % 3 == 0) {
+//              System.out.print("\t");
+//            }
+                if (i == 8 && j == 8) {
+                    System.out.print(array[i][j] + "}");
+                } else if (j == 0) {
+                    System.out.print("{" + array[i][j] + ",");
+                } else if (j == 8) {
+                    System.out.print(array[i][j] + "},");
+                } else {
+                    System.out.print(array[i][j] + ",");
+                }
             }
 //            if ((i + 1) % 3 == 0) {
 //                System.out.println();
 //            }
             System.out.println();
         }
-
     }
-
     public static void main(String[] args) {
         数独_生成 re = new 数独_生成();
         int num[][] = re.reversionInit();
-//初始化第一行
+        //初始化第一行
         re.arrayRowOne(num);
-//得到一个正确的数独数据
+        //得到一个正确的数独数据
         re.reversion(num, 1, 0);
-
         //amount控制需要挖多少个空
-        re.printArray(dig(re.reversion(num, 1, 0), 60));
+        re.printArray(dig(re.reversion(num, 1, 0), 55));
     }
 }
 

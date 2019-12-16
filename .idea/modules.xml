@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/src/题目/数独/sudoku.iml" filepath="$PROJECT_DIR$/src/题目/数独/sudoku.iml" />
       <module fileurl="file://$PROJECT_DIR$/做题啊.iml" filepath="$PROJECT_DIR$/做题啊.iml" />
     </modules>
   </component>

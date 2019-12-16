@@ -9,7 +9,6 @@ public class 数独_解 {
     static  int count = 0;
     static class StopMsgException extends RuntimeException {
     }
-
     //从list A中删去list B中的数据
     public static List<Integer> listrem(List<Integer> listA, List<Integer> listB) {
         for (Iterator<Integer> itA = listA.iterator(); itA.hasNext(); ) {
@@ -25,7 +24,6 @@ public class 数独_解 {
         }
         return listA;
     }
-
     //检测每一行和列是否满足规则
     private static boolean valid_line_and_row(int[][] sudoku_target) {
         for (int i = 0; i < 9; i++) {
@@ -54,7 +52,6 @@ public class 数独_解 {
         }
         return true;
     }
-
     //检测每个3x3宫是否符合
     public static boolean valid_gong_all(int[][] sudoku_calculat) {
 
@@ -186,7 +183,6 @@ public class 数独_解 {
         }
         return true;
     }
-
     //可填数验证，宫
     public static List<Integer> valid_gong_select_num(int[][] sudoku_calculat, int line, int column, List<Integer> list_target) {
         //验证 宫
@@ -269,7 +265,6 @@ public class 数独_解 {
         }
         return list_target;
     }
-
     //得到指定位置的可填入数字，返回是list
     public static List<Integer> selected_num(int[][] target_sudoku, int target_line, int target_column) {
         int line, column;
@@ -303,7 +298,6 @@ public class 数独_解 {
 
         return valid_gong_select_num(target_sudoku, target_line, target_column, selected_number_all);
     }
-
     //将要解决的的数独写入
     public static int[][] sudoku_load() {
         int[][] sudoku_temp = new int[9][9];
@@ -315,10 +309,8 @@ public class 数独_解 {
         }
         return sudoku_temp;
     }
-
-    //如果可填入数为只有一个，直接填入. 入参：需要填入的数独  ：返回：填入后的数独
+    //如果可填入数为只有一个，直接填入
     public static int[][] sudoku_put_onlyone(int[][] sudoku_target) {
-
         for (int i = 0; i < sudoku_target.length; i++) {
             for (int j = 0; j < sudoku_target[i].length; j++) {
                 if (selected_num(sudoku_target, i, j).size() == 1 && sudoku_target[i][j] == 0) {
@@ -329,10 +321,8 @@ public class 数独_解 {
         }
         return sudoku_target;
     }
-
-    // 递归
+    // 递归 主循环
     public static void solve(int[][] sudoku_target, int line, int column) {
-
         if (line == 8 && column == 9) {
             //已经成功了，打印数组即可
             if (valid_gong_all(sudoku_target) && valid_line_and_row(sudoku_target)) {
@@ -352,7 +342,6 @@ public class 数独_解 {
             line++;
             column = 0;
         }
-
         if (sudoku_target[line][column] == 0) {
             for (int i = 0; i < selected_num(sudoku_target, line, column).size(); i++) {
                 sudoku_target[line][column] = selected_num(sudoku_target, line, column).get(i);
@@ -364,7 +353,6 @@ public class 数独_解 {
             solve(sudoku_target, line, column + 1);
         }
     }
-
     //要解决的数独
     public static int sudoku(int line, int column) {
 
@@ -380,7 +368,7 @@ public class 数独_解 {
                    {5, 9, 3, 2, 6, 8, 1, 7, 4},
                    {7, 6, 8, 1, 4, 5, 3, 2, 9}*/
 
-                    /* {9, 0, 0, 0, 2, 0, 0, 0, 0},
+                     {9, 0, 0, 0, 2, 0, 0, 0, 0},
                      {1, 0, 0, 0, 0, 6, 0, 4, 0},
                      {0, 6, 4, 0, 3, 0, 0, 0, 0},
                      {6, 9, 7, 0, 8, 0, 0, 0, 0},
@@ -388,7 +376,7 @@ public class 数独_解 {
                      {3, 0, 0, 0, 5, 0, 0, 0, 8},
                      {0, 0, 0, 0, 4, 0, 0, 3, 2},
                      {0, 7, 0, 3, 1, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 6, 8, 0, 9, 7}*/
+                     {0, 0, 0, 0, 6, 8, 0, 9, 7}
 
                   /*{0, 0, 7, 0, 0, 0, 0, 0, 0},
                   {5, 0, 0, 4, 0, 0, 7, 0, 0},
@@ -400,17 +388,37 @@ public class 数独_解 {
                   {0, 0, 9, 0, 0, 6, 0, 0, 1},
                   {0, 0, 0, 0, 0, 0, 8, 0, 0}*/
 
-                {0, 0, 0, 0, 0, 0, 0, 3, 0},
-                {3, 0, 1, 0, 0, 7, 9, 0, 0},
-                {0, 0, 0, 0, 0, 2, 0, 0, 0},
-                {0, 0, 7, 0, 0, 0, 0, 0, 2},
-                {0, 0, 0, 0, 2, 0, 0, 0, 0},
-                {0, 0, 0, 8, 0, 3, 0, 9, 5},
-                {0, 0, 0, 0, 0, 8, 1, 0, 0},
-                {0, 3, 0, 0, 1, 5, 0, 0, 0},
-                {0, 4, 8, 0, 0, 0, 5, 0, 0}
+            /*    {5,8,3,0,0,0,0,0,0},
+                {4,0,0,0,0,0,0,0,0},
+                {9,7,6,0,0,1,0,0,0},
+                {0,0,7,0,5,0,0,0,0},
+                {0,0,0,2,1,0,0,8,0},
+                {0,1,0,8,0,9,5,0,0},
+                {7,0,9,0,0,2,4,0,0},
+                {2,0,8,0,0,0,0,0,0},
+                {0,3,0,0,0,0,2,9,0}*/
 
-//                //史上最难数独233333
+             /*   {0,0,0,0,0,8,0,0,0},
+                {5,0,0,0,0,0,0,0,0},
+                {3,7,0,0,9,0,0,0,5},
+                {9,0,0,0,0,0,0,0,3},
+                {0,0,0,0,0,0,0,0,0},
+                {0,0,6,0,0,1,0,8,0},
+                {0,0,8,0,0,0,0,6,0},
+                {0,0,4,0,8,0,0,0,0},
+                {0,0,0,5,3,0,0,0,0}
+*/
+               /* {0,0,5,7,0,0,0,0,0},
+                {4,0,0,0,0,0,9,3,0},
+                {0,7,0,0,0,0,8,5,1},
+                {0,9,8,0,5,4,0,0,2},
+                {6,0,0,2,1,3,0,0,0},
+                {0,0,0,0,0,0,0,0,6},
+                {0,0,0,0,0,0,2,0,0},
+                {0,0,0,0,0,0,0,8,5},
+                {1,0,3,0,0,5,0,0,9}*/
+
+//
 //                {8, 0, 0, 0, 0, 0, 0, 0, 0},
 //                {0, 0, 3, 6, 0, 0, 0, 0, 0},
 //                {0, 7, 0, 0, 9, 0, 2, 0, 0},
@@ -423,7 +431,6 @@ public class 数独_解 {
         };
         return sudoku[line][column];
     }
-
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();   //获取开始时间
         List<String> list_location_storager = new ArrayList<>();
