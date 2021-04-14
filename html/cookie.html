@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    //取cookies
+    function getCookie(name){
+        let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        if (arr != null) return unescape(arr[2]);
+        return null;
+    }
+    //删除cookie
+    function delCookie(name){
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = getCookie(name);
+        if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+
+    $(document).ready(function () {
+        if ($.cookie("user") == null) {
+            var form = document.getElementById('submit');
+            form.click();
+
+        }
+        else {
+        }
+        $.cookie("user", "1");
+        delCookie("user");
+    });
+</script>
+
+
+</html>

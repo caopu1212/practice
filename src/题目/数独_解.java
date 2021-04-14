@@ -310,7 +310,7 @@ public class 数独_解 {
         return sudoku_temp;
     }
     //如果可填入数为只有一个，直接填入
-    public static int[][] sudoku_put_onlyone(int[][] sudoku_target) {
+    public static int[][] sudoku_put_onlyone(int[][] sudoku_target){
         for (int i = 0; i < sudoku_target.length; i++) {
             for (int j = 0; j < sudoku_target[i].length; j++) {
                 if (selected_num(sudoku_target, i, j).size() == 1 && sudoku_target[i][j] == 0) {
