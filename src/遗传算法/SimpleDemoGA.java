@@ -3,6 +3,10 @@ import java.util.Random;
 
 /**
  * @author Vijini
+ *
+ *
+ *随机生成奇书 偶数 负数
+ * 最后选出5个奇数为目标。
  */
 //Main class
 public class SimpleDemoGA {
@@ -18,7 +22,7 @@ public class SimpleDemoGA {
 
         SimpleDemoGA demo = new SimpleDemoGA();
 
-        //Initialize population
+        //Initialize population 添加10组基因，每组基因五个遗传编码（编码为（奇，偶，负），解码为%2（-1,1,0））
         demo.population.initializePopulation(10);
 
         //Calculate fitness of each individual
@@ -72,13 +76,14 @@ public class SimpleDemoGA {
     }
 
     //Crossover
+    // TODO: 2021/4/15  分左右基因链， 
     void crossover() {
         Random rn = new Random();
 
         //Select a random crossover point
         int crossOverPoint = rn.nextInt(population.individuals[0].geneLength);
 
-        //Swap values among parents
+        //Swap values among parents（最高的和第二高的杂交）
         for (int i = 0; i < crossOverPoint; i++) {
             int temp = fittest.genes[i];
             fittest.genes[i] = secondFittest.genes[i];
@@ -88,7 +93,7 @@ public class SimpleDemoGA {
 
     }
 
-    //Mutation
+    //Mutation（突变）
     void mutation() {
         Random rn = new Random();
 

@@ -10,7 +10,6 @@ public class one {
         {
             a = count / 3;
             count++;
-
             System.out.println(a);
         }
 
