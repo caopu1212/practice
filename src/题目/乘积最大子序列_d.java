@@ -36,20 +36,6 @@ public class 乘积最大子序列_d {
             nums.remove(0);
         }
 
-        result = max;
-//        for (int p = 0;p < nums.size();p++){
-//            for (int i = p; i < nums.size(); i++) {
-//                calculate.add(nums.get(i));
-//                int result_of_list = 1;
-//                for (int j = 0; j < calculate.size(); j++) {
-//                    result_of_list = result_of_list * calculate.get(j);
-//                }
-//                if (result_of_list > max) {
-//                    max = result_of_list;
-//                }
-//
-//            }
-//        }
 
         return result;
     }
