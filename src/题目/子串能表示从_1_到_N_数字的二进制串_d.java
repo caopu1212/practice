@@ -27,41 +27,79 @@ public class 子串能表示从_1_到_N_数字的二进制串_d {
     }
 
     public static boolean function(String S, Integer N) {
+        int count = 0;
         boolean result = true;
         List<String> result_list = new ArrayList<>();
-        List<String> DecimaltoBinary_list = new ArrayList<>();
-        for (int i = 1; i <= N; i++) {
-            DecimaltoBinary_list.add(DecimaltoBinary(i));
-        }
         A:
-        for (String DecimaltoBinary : DecimaltoBinary_list) {
+        for (int w = 1; w <= N; w++) {
+            count++;
+            String temp =   DecimaltoBinary(w);
             B:
             for (int j = 0; j < S.length(); j++) {
                 String temp_binary = "";
                 for (int i = j; i < S.length(); i++) {
                     temp_binary = temp_binary + String.valueOf(S.charAt(i));
                     //如果第一位和目标二级制不一样，跳出，首位加一个
-                    if (temp_binary.charAt(0) == DecimaltoBinary.charAt(0)) {
-                        if (temp_binary.equals(DecimaltoBinary)) {
-                            result_list.add(DecimaltoBinary);
+                    if (temp_binary.charAt(0) == temp.charAt(0)) {
+                        if (temp_binary.equals(temp)) {
+                            result_list.add(temp);
                             break B;
+                        }
+                        if (temp_binary.length()> temp.length()){
+                            break ;
                         }
                     } else {
                         break;
-
                     }
                 }
             }
         }
-        if (result_list.size() != DecimaltoBinary_list.size()) {
+        if (result_list.size() != count) {
             result = false;
         }
         return result;
     }
 
+//    public static boolean function(String S, Integer N) {
+//        boolean result = true;
+//        List<String> result_list = new ArrayList<>();
+//        List<String> DecimaltoBinary_list = new ArrayList<>();
+//        for (int i = 1; i <= N; i++) {
+//            DecimaltoBinary_list.add(DecimaltoBinary(i));
+//        }
+//        A:
+//        for (String DecimaltoBinary : DecimaltoBinary_list) {
+//            B:
+//            for (int j = 0; j < S.length(); j++) {
+//                String temp_binary = "";
+//                for (int i = j; i < S.length(); i++) {
+//                    temp_binary = temp_binary + String.valueOf(S.charAt(i));
+//                    //如果第一位和目标二级制不一样，跳出，首位加一个
+//                    if (temp_binary.charAt(0) == DecimaltoBinary.charAt(0)) {
+//                        if (temp_binary.equals(DecimaltoBinary)) {
+//                            result_list.add(DecimaltoBinary);
+//                            break B;
+//                        }
+//                    } else {
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//        if (result_list.size() != DecimaltoBinary_list.size()) {
+//            result = false;
+//        }
+//        return result;
+//    }
+
     public static void main(String[] args) {
         System.out.println(function("0110", 3));
         System.out.println(function("0110", 4));
+
+//        System.out.println(function(" 011010101010111101010101011111111111111111111111111111111110000000000000011111101010101001010101010101010101010101111010101010111111111111111111111111111111111100000000000000111111010101010010101010101010101010100", 1000000000));
+
+
+
     }
 
 }
