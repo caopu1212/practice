@@ -36,7 +36,7 @@ public class 乘积最大子序列_d {
             nums.remove(0);
         }
 
-
+        result = max;
         return result;
     }
 
