@@ -26,7 +26,7 @@ import java.util.List;
 共有 2 种不同翻译, "--...-." 和 "--...--.".*/
 public class 摩尔斯密码_d {
 
-    public static int translate_of_morse_code (String StringList[]){
+    public static int translate_of_morse_code (String[] StringList){
         String Morse_code_reflective_list[] = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
         String alphabet_list[] = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
         int result =0;
@@ -49,15 +49,18 @@ public class 摩尔斯密码_d {
 
 
         while (Morse_code_list.size()!= 0){
-            String temp =Morse_code_list.remove(0);
-            Morse_code_list.remove(temp);
+            String temp =Morse_code_list.get(0);
+            while(Morse_code_list.contains(temp)){
+                Morse_code_list.remove(temp);
+            }
             result++;
         }
 
         return result;
     }
     public static void main(String[] args) {
-        String words[] = {"gin", "zen", "gig", "msg"};
+//        String words[] = {"gin", "zen", "gig", "msg"};
+        String words[] = {"rwjje","aittjje","auyyn","lqtktn","lmjwn"};
         System.out.println(translate_of_morse_code(words));
     }
 

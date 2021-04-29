@@ -12,7 +12,7 @@ import java.util.List;
 //
 
 public class 三数之和_d {
-    public static void threeSum(ArrayList<Integer> nums) {
+    public static List<Integer> threeSum(ArrayList<Integer> nums) {
         int a, b, c;
         int a_and_b;
         List<Integer> temp = new ArrayList<>();
@@ -27,19 +27,19 @@ public class 三数之和_d {
                                 result.add(nums.get(a));
                                 result.add(nums.get(b));
                                 result.add(nums.get(c));
-                                System.out.println(result);
+                                return  result;
                             }
                         }
                     }
                 }
             }
         }
-        return;
+        return temp;
     }
 
     public static void main(String[] args) {
         ArrayList<Integer> a = new ArrayList();
         Collections.addAll(a,-1,0,1,2,-1,-4);
-        threeSum(a);
+        System.out.println(threeSum(a));
     }
 }
