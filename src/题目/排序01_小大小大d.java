@@ -57,6 +57,10 @@ public class 排序01_小大小大d {
         return aim_list;
     }
     public static void main(String[] args) {
+        Integer q = 123;
+        int b = 123;
+        String.valueOf(b);
+
         List a= new ArrayList();
         int[] w = {1,4,2,5,6,5,8,9,4,5,4,4};
         for(int i= 0 ; i < w.length;i ++){

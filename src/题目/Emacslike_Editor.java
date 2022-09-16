@@ -131,7 +131,7 @@ public class Emacslike_Editor {
                             lineText = lineText.replace("*cursor*", "");
 
                             //若不在尾 右移一位
-                            if (textIndex != lineText.length() - 1) {
+                            if (textIndex != lineText.length()) {
                                 StringBuilder sb = new StringBuilder(lineText);
                                 sb.insert(textIndex + 1, "*cursor*");
                                 textList.set(index, String.valueOf(sb));
@@ -182,9 +182,9 @@ public class Emacslike_Editor {
                             lineText = lineText.replace("*cursor*", "");
 
                             //若是行尾 且 不是最后一行 则下一行加到这一行尾
-                            if (textIndex == lineText.length() - 1 && index != textList.size() - 1) {
+                            if (textIndex == lineText.length() && index != textList.size() - 1) {
 
-                                textList.set(index, textIndex + textList.get(index + 1) + lineText + "*cursor*");
+                                textList.set(index, lineText + textList.get(index + 1) + "*cursor*");
                                 textList.remove(index + 1);
 
                             } else if (textIndex != lineText.length() - 1) {
@@ -210,7 +210,7 @@ public class Emacslike_Editor {
 
                             //若是行尾 且 不是最后一行 则下一行加到这一行尾 并缓存换行符
                             if (textIndex == lineText.length() & index != textList.size() - 1) {
-                                textList.set(index, textIndex + textList.get(index + 1) + lineText + "*cursor*");
+                                textList.set(index, lineText + textList.get(index + 1) + "*cursor*");
                                 textList.remove(index + 1);
                                 buffer = "\n";
                             } else if (textIndex != lineText.length()) {
@@ -252,13 +252,11 @@ public class Emacslike_Editor {
                         }
                     }
                     break;
-
-
             }
+            System.out.println(textList);
+            System.out.println(operator);
 
         }
-
-
         for (int i = 0; i < textList.size(); i++) {
             if (textList.get(i).contains("*cursor*")) {
                 textList.set(i, textList.get(i).replace("*cursor*", ""));
